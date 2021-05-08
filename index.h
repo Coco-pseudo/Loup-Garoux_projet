@@ -10,7 +10,7 @@
     #define FALSE 0
 
     // implanter des cartes d'extensions? le best of?( meilleures cartes choisies par la commu )
-    enum cartes {
+    enum roles {
         AUCUN,
         SORCIERE,
         LOUPGAROUS,
@@ -20,14 +20,17 @@
         PETITEFILLE,
         CHASSEUR,
         VOLEUR, 
+        VILLAGE,
+        AMOUREUX,
     };
 
     typedef struct Stjoueur
     {
-        char[10] nom; /*nom / pseudo*/
+        char* nom; /*nom / pseudo*/
         int role;
         int capitaine; /* oui = 1, non = 0 */
-        int status; /*mort ou vivant, mort = 0, vivant = 1 */
+        int amoureux; /* oui = 1, non = 0 */
+        int vivant; /*mort ou vivant, mort = 0, vivant = 1 */
     } Joueur;
 
     typedef struct Carte {
