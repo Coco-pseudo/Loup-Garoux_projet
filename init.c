@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include "init.h"
 
 #define NB 23
 #define TRUE 1
@@ -16,7 +17,7 @@ enum cartes {
     CUPIDON,
     PETITEFILLE,
     CHASSEUR,
-    VOLEUR, // tu l'avais pas mis, tu veux le retirer ?
+    VOLEUR, 
 };
 
 typedef struct Stjoueur
@@ -25,7 +26,7 @@ typedef struct Stjoueur
     int role;
     int capitaine; /* oui = 1, non = 0 */
     int status; /*mort ou vivant, mort = 0, vivant = 1 */
-}Joueur;
+} Joueur;
 
 typedef struct Carte {
     int carte; // sera le role du joueur, dépend de l'énumération
@@ -58,12 +59,20 @@ Carte* initPaquet(){ // TODO améliorer la fonction pour que le paquet dépende 
 int tireCarte(Carte* paquet){
     int choix = AUCUN, position = -1;
     while (position == -1){
-        position = rand()%NB;
+        position = rand() % NB;
         if (paquet[position].dispo){
             choix = paquet[position].carte;
+            paquet[position].dispo = FALSE;
         } else {
             position = -1; // carte non disponible => on repioche
         }
     }
     return choix;
+}
+
+void distribueCarte(Joueur* joueurs, int nb_joueur){ // joueurs étant un pointeur sur l'ensemble des joueurs, pas besoin de le retourner
+    Carte* paquet = initPaquet();
+    for (int i=0; i<nb_joueur; i++){
+        joueurs[i].role = tireCarte(paquet);
+    }
 }
