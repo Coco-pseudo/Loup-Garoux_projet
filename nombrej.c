@@ -6,7 +6,7 @@ int nombrej () {
     int k;
     printf(" Quel est le nombre de joueurs?");
     scanf ("%d",&n);
-    while (n<8 && n>24 && n!=40)
+    while (n<8 || n>24 && n!=-1)
         {
             printf("ce nombre n'est pas un nombre valide de joueurs pour jouer \n");
             printf("voulez vous ressaisir un nombre (0) ou quitter le jeu(1)?");
@@ -26,7 +26,7 @@ int nombrej () {
                         }
                     break;
                 case 1:
-                    n=40;
+                    n=-1;
                     break;
                 default:
                     printf("valeur non valide");
@@ -34,9 +34,5 @@ int nombrej () {
             }
 
         };
-
-
-    
-
     return n;
 }
