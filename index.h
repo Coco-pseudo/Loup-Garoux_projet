@@ -5,7 +5,11 @@
 #ifndef INDEX
 #define INDEX
 
-    #define NB 23
+    // pour aider à définir le nombre de joueur et facilité le changement de règle
+    #define NB_JOUEUR_MAX 23
+    #define NB_JOUEUR_MIN 8
+
+    // pour simuler l'utilisation de booléens
     #define TRUE 1
     #define FALSE 0
 
